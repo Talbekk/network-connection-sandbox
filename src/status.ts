@@ -1,16 +1,5 @@
-// src/status.ts
-
 export async function isTrulyOnline(): Promise<boolean> {
-  if (!navigator.onLine) return false
-  try {
-    const res = await fetch('https://www.google.com/favicon.ico', {
-      method: 'HEAD',
-      cache: 'no-store',
-    })
-    return res.ok
-  } catch {
-    return false
-  }
+  return navigator.onLine;
 }
 
 export function showStatusMessage(message: string, type: 'info' | 'warning' | 'error' = 'info') {
@@ -22,7 +11,7 @@ export function showStatusMessage(message: string, type: 'info' | 'warning' | 'e
 
 export function showConnectionStatus(isOnline: boolean) {
   const connection = document.querySelector<HTMLDivElement>('#connection')
-  if (!connection) return
+  if (!connection) return;
   
   if (isOnline) {
     connection.textContent = '🟢 Online'
