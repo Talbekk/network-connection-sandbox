@@ -9,10 +9,14 @@ await worker.start({
 console.log('MSW is ready');
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <h1>Network Connection Issues Test</h1>
-    <div id="status" class="info" style="margin-top: 1rem; font-size: 0.9rem;"></div>
-    <div id="connection" class="info" style="margin-top: 1rem; font-size: 0.9rem;"></div>
+  <div class="container">
+    <section class="nav">
+        <h1>Network Connection Issues Test</h1> 
+       <div class="row"><div id="connection"></div></div>
+    </section>
+    <section class="content">
+      <div class="row"><span>Request Timing:</span><div id="status"></div></div>
+    </section>
   </div>
 `;
 // Start monitoring connectivity
@@ -36,8 +40,8 @@ const loadGorillaData = async () => {
   }, 8000);
 
   try {
-    console.log('Fetching /api/gorilla...');
-    const res = await fetch('/api/gorilla');
+    console.log('Fetching /api/tesst...');
+    const res = await fetch('/api/test');
     console.log('Response status:', res.status);
     
     if (!res.ok) {
@@ -49,7 +53,7 @@ const loadGorillaData = async () => {
     clearTimeout(stillLoading);
     clearTimeout(longDelay);
     showConnectionStatus(true);
-    showStatusMessage(`✅ Gorilla responded: ${json.message}`, 'info');
+    showStatusMessage(`✅ Request responded: ${json.message}`, 'info');
   } catch (err) {
     console.error('Fetch error:', err);
     clearTimeout(stillLoading);
@@ -59,7 +63,7 @@ const loadGorillaData = async () => {
     const online = await isTrulyOnline();
     showConnectionStatus(online);
     
-    showStatusMessage('❌ Failed to load Gorilla service.', 'error');
+    showStatusMessage('❌ Failed to load api service.', 'error');
   }
 };
 

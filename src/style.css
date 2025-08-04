@@ -8,6 +8,45 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 1fr;
+  height: 100vh;
+}
+
+.nav {
+  background-color: #2563eb;
+  padding: .5rem;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+#connection {
+  background-color: #fff;
+  color: #000;
+  padding: .5rem;
+  border-radius: 5px;
+}
+
+.content {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -18,25 +57,9 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+  margin: 0;
+} 
 
 .card {
   padding: 2em;
@@ -58,4 +81,12 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
 }
