@@ -25,17 +25,17 @@ listenToConnectivityChanges();
 // Simulate a Gorilla service fetch
 const loadGorillaData = async () => {
   const stillLoading = setTimeout(() => {
-    showStatusMessage('⏳ Still loading... Thanks for your patience.', 'info');
+    showStatusMessage('Still loading... Thanks for your patience.', 'info');
   }, 2000);
 
   const longDelay = setTimeout(async () => {
     const online = await isTrulyOnline();
     if (!online) {
       showConnectionStatus(false);
-      showStatusMessage('🔴 You appear to be offline. Trying to reconnect...', 'error');
+      showStatusMessage('You appear to be offline. Trying to reconnect...', 'error');
     } else {
       showConnectionStatus(true);
-      showStatusMessage('⚠️ This is taking longer than expected. Please check your network.', 'warning');
+      showStatusMessage('This is taking longer than expected. Please check your network.', 'warning');
     }
   }, 8000);
 
